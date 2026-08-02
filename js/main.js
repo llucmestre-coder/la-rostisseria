@@ -153,6 +153,43 @@
       .catch(function () { /* es queden les xifres de l'HTML */ });
   }
 
+  /* ---- Fotografies -----------------------------------------------------
+     Cada `.foto[data-foto="nom"]` espera `assets/fotos/<nom>.jpg`. Mentre el
+     fitxer no hi sigui, es queda el marcador dissenyat que ja és a l'HTML;
+     quan el client el deixi a la carpeta, aquesta funció el detecta i el
+     posa. El client no ha de tocar ni una línia de codi: només deixar el
+     fitxer amb el nom que toca.
+
+     Va en aquesta direcció i no a l'inrevés a posta: sense JS es veu el
+     marcador, que és presentable, i no pas la icona d'imatge trencada.
+     Mentre falti alguna foto, la consola del navegador ensenyarà un 404 per
+     cadascuna. És esperat i desapareix sol quan hi siguin.        ------ */
+
+  Array.prototype.forEach.call(doc.querySelectorAll('.foto[data-foto]'), function (marc) {
+    var ruta = 'assets/fotos/' + marc.dataset.foto + '.jpg';
+    var prova = new Image();
+
+    prova.addEventListener('load', function () {
+      var img = doc.createElement('img');
+      img.src = ruta;
+      img.alt = marc.dataset.alt || '';
+      img.width = prova.naturalWidth;
+      img.height = prova.naturalHeight;
+
+      if (marc.dataset.prioritat === 'alta') {
+        img.setAttribute('fetchpriority', 'high');
+      } else {
+        img.loading = 'lazy';
+      }
+
+      marc.innerHTML = '';
+      marc.appendChild(img);
+      marc.dataset.estat = 'plena';
+    });
+
+    prova.src = ruta;
+  });
+
   /* ---- Mapa darrere d'un botó -----------------------------------------
      Fins que el visitant no el demana, Google no rep res.          ------ */
 

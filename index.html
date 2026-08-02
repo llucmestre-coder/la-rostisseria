@@ -76,6 +76,37 @@
     </div>
   </section>
 
+  <!-- ESPAIS DE FOTOGRAFIA — llegiu `assets/fotos/LLEGIU-ME.txt`.
+       Cada `data-foto` espera el fitxer `assets/fotos/<nom>.jpg`. Mentre no hi
+       sigui, es veu el marcador dissenyat; quan el client el deixi a la
+       carpeta, hi entra sol. No cal tocar cap línia d'aquest fitxer. -->
+  <div class="tira-fotos">
+    <figure class="foto foto--panoramica" data-foto="rostidor"
+            data-alt="El rostidor de La Rostisseria amb els pollastres a l'ast">
+      <div class="foto__pendent">
+        <img class="foto__marca" src="assets/icona-256.png" alt="" width="42" height="42" loading="lazy">
+        <p class="foto__titol">El rostidor</p>
+        <p class="foto__nota">Foto pendent</p>
+      </div>
+    </figure>
+    <figure class="foto foto--panoramica" data-foto="taulell"
+            data-alt="El taulell amb les safates dels plats del dia">
+      <div class="foto__pendent">
+        <img class="foto__marca" src="assets/icona-256.png" alt="" width="42" height="42" loading="lazy">
+        <p class="foto__titol">El taulell</p>
+        <p class="foto__nota">Foto pendent</p>
+      </div>
+    </figure>
+    <figure class="foto foto--panoramica" data-foto="facana"
+            data-alt="La façana de La Rostisseria al Carrer Major, 24">
+      <div class="foto__pendent">
+        <img class="foto__marca" src="assets/icona-256.png" alt="" width="42" height="42" loading="lazy">
+        <p class="foto__titol">La façana</p>
+        <p class="foto__nota">Foto pendent</p>
+      </div>
+    </figure>
+  </div>
+
   <p class="lema">Cuina casolana · L'Ametlla del Vallès · Des del 2016</p>
 
   <section class="seccio" aria-labelledby="t-carta">
@@ -182,44 +213,69 @@
   </section>
 
   <section class="seccio" aria-labelledby="t-casola">
-    <div class="envolt envolt--estret">
-      <p class="retol">La casa</p>
-      <h2 id="t-casola">Casolà vol dir cuinat aquí</h2>
-      <p>
-        Vam obrir el 2016 al Carrer Major. Des d'aleshores fem el mateix: cuina
-        de casa, feta el mateix dia, amb producte de primera i sense greixos ni
-        additius afegits. Els controls sanitaris els passem nosaltres, pel nostre
-        compte i periòdicament, perquè el que us emporteu arribi com ha d'arribar.
-      </p>
-      <!-- «conegudes» i «famós» són paraules seves: la seva web deia que les
-           croquetes «ja són conegudes per tot arreu» i parlava del «nostre famós
-           fricandó». No s'hi afegeix cap superlatiu que ells no diguin: «el que
-           més es ven» no ho sabem i no s'escriu. -->
-      <p>
-        Les croquetes de carn d'olla i el fricandó són els que ens han fet
-        coneguts. Bon profit.
-      </p>
+    <div class="envolt">
+      <div class="casa">
+        <figure class="foto foto--retrat" data-foto="equip"
+                data-alt="Qui hi ha darrere el taulell de La Rostisseria">
+          <div class="foto__pendent">
+            <img class="foto__marca" src="assets/icona-256.png" alt="" width="42" height="42" loading="lazy">
+            <p class="foto__titol">Qui hi ha darrere el taulell</p>
+            <p class="foto__nota">Foto pendent</p>
+          </div>
+        </figure>
+        <div class="pila">
+          <p class="retol">La casa</p>
+          <h2 id="t-casola">Casolà vol dir cuinat aquí</h2>
+          <p>
+            Vam obrir el 2016 al Carrer Major. Des d'aleshores fem el mateix:
+            cuina de casa, feta el mateix dia, amb producte de primera i sense
+            greixos ni additius afegits. Els controls sanitaris els passem
+            nosaltres, pel nostre compte i periòdicament, perquè el que us
+            emporteu arribi com ha d'arribar.
+          </p>
+          <!-- «conegudes» i «famós» són paraules seves: la seva web deia que les
+               croquetes «ja són conegudes per tot arreu» i parlava del «nostre
+               famós fricandó». No s'hi afegeix cap superlatiu que ells no
+               diguin: «el que més es ven» no ho sabem i no s'escriu. -->
+          <p>
+            Les croquetes de carn d'olla i el fricandó són els que ens han fet
+            coneguts. Bon profit.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="seccio zona-fosca" aria-labelledby="t-veu">
-    <div class="envolt">
-      <p class="retol">El que en diu la gent</p>
-      <h2 id="t-veu" class="nomes-lector">Valoració a Google</h2>
-      <div class="valoracio">
-        <p class="valoracio__nota" data-valoracio>4,1</p>
-        <p class="valoracio__detall">
-          de mitjana a Google, amb <strong data-nombre-ressenyes>142</strong> ressenyes
-          del veïnat de L'Ametlla i de la rodalia.
+  <!-- Text a sobre de foto. El vel va en dues capes al CSS perquè es llegeixi
+       tant si la foto que hi posa el client és clara com si és fosca. -->
+  <section class="banda-foto" aria-labelledby="t-veu">
+    <figure class="foto" data-foto="pollastre"
+            data-alt="Un pollastre a l'ast acabat de treure del rostidor">
+      <div class="foto__pendent">
+        <img class="foto__marca" src="assets/icona-256.png" alt="" width="42" height="42" loading="lazy">
+        <p class="foto__titol">Un pollastre acabat de treure</p>
+        <p class="foto__nota">Foto pendent</p>
+      </div>
+    </figure>
+    <div class="envolt banda-foto__contingut">
+      <div class="banda-foto__text">
+        <p class="retol">El que en diu la gent</p>
+        <h2 id="t-veu" class="nomes-lector">Valoració a Google</h2>
+        <div class="valoracio">
+          <p class="valoracio__nota" data-valoracio>4,1</p>
+          <p class="valoracio__detall">
+            de mitjana a Google, amb <strong data-nombre-ressenyes>142</strong> ressenyes
+            del veïnat de L'Ametlla i de la rodalia.
+          </p>
+        </div>
+        <p class="declaracio">
+          Deu anys fent <strong>el dinar</strong> de moltes cases del poble.
         </p>
       </div>
-      <p class="declaracio">
-        Deu anys fent <strong>el dinar</strong> de moltes cases del poble.
-      </p>
-      <!-- No hi ha cap ressenya citada a la web: no se n'ha pogut llegir cap a la
-           font amb el text literal. Abans d'afegir-ne, copiar-les lletra per
-           lletra del seu perfil de Google. Vegeu §8.A del playbook. -->
     </div>
+    <!-- No hi ha cap ressenya citada a la web: no se n'ha pogut llegir cap a la
+         font amb el text literal. Abans d'afegir-ne, copiar-les lletra per
+         lletra del seu perfil de Google. Vegeu §8.A del playbook. -->
   </section>
 
   <section class="seccio" aria-labelledby="t-faq">

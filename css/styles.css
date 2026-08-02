@@ -153,7 +153,7 @@ p, ul, ol, dl, table, figure { margin: 0; }
   outline-offset: 3px;
   border-radius: 1px;
 }
-:is(.zona-fosca, .hero) :focus-visible { outline-color: var(--cresta-clar); }
+:is(.zona-fosca, .hero, .banda-foto) :focus-visible { outline-color: var(--cresta-clar); }
 
 .salta-al-contingut {
   position: absolute;
@@ -200,9 +200,9 @@ p, ul, ol, dl, table, figure { margin: 0; }
   background: var(--negre);
   color: var(--paper);
 }
-:is(.zona-fosca, .hero) h1,
-:is(.zona-fosca, .hero) h2,
-:is(.zona-fosca, .hero) h3 { color: var(--blanc); }
+:is(.zona-fosca, .hero, .banda-foto) h1,
+:is(.zona-fosca, .hero, .banda-foto) h2,
+:is(.zona-fosca, .hero, .banda-foto) h3 { color: var(--blanc); }
 
 /* ---------- Rètols petits ----------------------------------------------- */
 
@@ -214,21 +214,21 @@ p, ul, ol, dl, table, figure { margin: 0; }
   color: var(--cresta);
   margin: 0;
 }
-:is(.zona-fosca, .hero) .retol { color: var(--cresta-clar); }
+:is(.zona-fosca, .hero, .banda-foto) .retol { color: var(--cresta-clar); }
 
 .retol--numerat::before {
   content: attr(data-num);
   color: var(--fum);
   margin-right: 0.75em;
 }
-:is(.zona-fosca, .hero) .retol--numerat::before { color: var(--gris-fosc); }
+:is(.zona-fosca, .hero, .banda-foto) .retol--numerat::before { color: var(--gris-fosc); }
 
 .entradeta {
   font-size: 1.2rem;
   color: var(--fum);
   max-width: 36em;
 }
-:is(.zona-fosca, .hero) .entradeta { color: var(--gris-fosc); }
+:is(.zona-fosca, .hero, .banda-foto) .entradeta { color: var(--gris-fosc); }
 
 /* ---------- Botons ------------------------------------------------------ */
 
@@ -262,8 +262,8 @@ p, ul, ol, dl, table, figure { margin: 0; }
 }
 .boto--contorn:hover { background: var(--tinta); color: var(--paper); }
 
-:is(.zona-fosca, .hero) .boto--contorn { color: var(--blanc); border-color: var(--blanc); }
-:is(.zona-fosca, .hero) .boto--contorn:hover { background: var(--blanc); color: var(--negre); }
+:is(.zona-fosca, .hero, .banda-foto) .boto--contorn { color: var(--blanc); border-color: var(--blanc); }
+:is(.zona-fosca, .hero, .banda-foto) .boto--contorn:hover { background: var(--blanc); color: var(--negre); }
 
 .boto--petit { font-size: 0.7rem; padding: 0.8em 1.1em; }
 
@@ -477,6 +477,191 @@ p, ul, ol, dl, table, figure { margin: 0; }
   color: var(--cresta);
 }
 
+/* ---------- Fotografies -------------------------------------------------
+   Cada espai de foto és un `.foto[data-foto="nom"]`. Mentre el fitxer
+   `assets/fotos/<nom>.jpg` no hi sigui, es veu el marcador dissenyat d'aquí
+   sota; quan el client el deixi a la carpeta, `main.js` el detecta i el posa
+   sol, sense tocar cap línia de codi.
+
+   El marcador NO pot semblar una caixa grisa trencada: és negre com el seu
+   rètol, porta la seva marca de l'ou amb la cresta i diu quina foto hi anirà.
+   I diu que està pendent, perquè ningú es pensi que és la foto de la casa. -- */
+
+.foto {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--negre);
+}
+
+/* Fill DIRECTE a posta: `.foto img` (0,1,1) guanyava a `.foto__marca` (0,1,0)
+   i inflava la marca del marcador fins a ocupar tot el requadre. La foto de
+   debò és sempre fill directe; la marca viu dins de `.foto__pendent`. */
+.foto > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.foto--panoramica { aspect-ratio: 4 / 3; }
+.foto--retrat     { aspect-ratio: 4 / 5; }
+.foto--banda      { aspect-ratio: 21 / 9; }
+
+@media (max-width: 47.99em) {
+  .foto--banda { aspect-ratio: 3 / 2; }
+}
+
+.foto__pendent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e2);
+  padding: var(--e3);
+  text-align: center;
+  /* Trama diagonal molt fluixa: el que distingeix un espai pensat d'un forat. */
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.035) 0 10px,
+    rgba(255, 255, 255, 0) 10px 22px
+  );
+  box-shadow: inset 0 0 0 1px var(--linia-fosca);
+}
+
+.foto__marca {
+  width: 42px;
+  height: 42px;
+  opacity: 0.9;
+}
+
+.foto__titol {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-estret);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: var(--blanc);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.foto__nota {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.6rem;
+  color: var(--cresta-clar);
+  margin: 0;
+}
+
+/* La tira de tres, a tot ample i sense marges: és el «aquí som» de la casa. */
+
+.tira-fotos {
+  display: grid;
+  gap: 2px;
+  background: var(--negre);
+}
+
+@media (min-width: 40em) {
+  .tira-fotos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Banda ampla amb text a sobre de la foto. El vel va en dues capes perquè el
+   text es llegeixi tant si la foto que hi posa el client és clara com fosca
+   (§4 del playbook): una que enfosqueix el costat del text i una que assenta
+   la part baixa. */
+
+.banda-foto {
+  position: relative;
+  background: var(--negre);
+  isolation: isolate;
+}
+
+.banda-foto .foto {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+}
+
+.banda-foto::before,
+.banda-foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Al mòbil el text ocupa tota l'amplada de la banda, o sigui que el vel no pot
+   aclarir-se cap a la dreta: allà el text hi queia a 3:1 amb una foto clara.
+   Per sota de 768 px el vel és parell i fort; a partir d'aquí, ja hi ha
+   columna buida a la dreta i pot ser horitzontal. */
+.banda-foto::before {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.9));
+}
+
+@media (min-width: 48em) {
+  .banda-foto::before {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.76) 50%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+}
+
+.banda-foto::after {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%);
+}
+
+.banda-foto__contingut {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--v-seccio);
+}
+
+.banda-foto__text { max-width: 34rem; }
+.banda-foto__text > * + * { margin-top: var(--v-blocs); }
+
+/* ⚠️ Contrast sobre una foto QUALSEVOL, no sobre la que hi hagi ara.
+   Provat amb una foto blanca del tot, que és el pitjor cas: el text blanc
+   aguanta (16,5:1 a l'esquerra, 9,3:1 on acaba), però el vermell clar hi
+   queia a 2,74:1 i no passava ni per a text gran.
+   Per això aquí l'accent no és text vermell: és un BLOC vermell opac amb
+   text blanc a sobre (5,28:1 fix, no depèn de la foto). */
+
+.banda-foto .retol { color: var(--paper); }
+
+.banda-foto .valoracio__nota {
+  display: inline-block;
+  background: var(--cresta);
+  color: var(--blanc);
+  padding: 0.05em 0.3em 0.14em;
+}
+
+.banda-foto .declaracio strong {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--cresta);
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.1em;
+}
+
+/* «La casa»: retrat al costat del text. És la secció de confiança. */
+
+.casa {
+  display: grid;
+  gap: var(--e5);
+  align-items: start;
+}
+
+@media (min-width: 52em) {
+  .casa { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+}
+
 /* ---------- Banda del lema ---------------------------------------------- */
 
 .lema {
@@ -549,7 +734,7 @@ p, ul, ol, dl, table, figure { margin: 0; }
   color: var(--cresta);
   margin-bottom: var(--e2);
 }
-:is(.zona-fosca, .hero) .pas::before { color: var(--cresta-clar); }
+:is(.zona-fosca, .hero, .banda-foto) .pas::before { color: var(--cresta-clar); }
 .pas h3 { margin-bottom: var(--e1); }
 
 /* ---------- Declaració (la seva promesa de casolà) ---------------------- */
@@ -580,6 +765,9 @@ p, ul, ol, dl, table, figure { margin: 0; }
   color: var(--cresta);
 }
 .valoracio__detall { font-size: 1.1rem; color: var(--fum); }
+
+:is(.zona-fosca, .hero, .banda-foto) .valoracio__nota { color: var(--cresta-clar); }
+:is(.zona-fosca, .hero, .banda-foto) .valoracio__detall { color: var(--gris-fosc); }
 
 /* ---------- Preguntes freqüents ----------------------------------------- */
 
@@ -629,7 +817,7 @@ p, ul, ol, dl, table, figure { margin: 0; }
   font-size: 0.7rem;
   color: var(--cresta);
 }
-:is(.zona-fosca, .hero) .dades dt { color: var(--cresta-clar); }
+:is(.zona-fosca, .hero, .banda-foto) .dades dt { color: var(--cresta-clar); }
 .dades dd { margin: var(--e1) 0 0; font-size: 1.15rem; }
 .dades a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
 
@@ -639,7 +827,7 @@ p, ul, ol, dl, table, figure { margin: 0; }
   padding: var(--e4);
   text-align: center;
 }
-:is(.zona-fosca, .hero) .mapa { border-color: var(--linia-fosca); }
+:is(.zona-fosca, .hero, .banda-foto) .mapa { border-color: var(--linia-fosca); }
 .mapa iframe {
   width: 100%;
   height: 22rem;
@@ -652,7 +840,7 @@ p, ul, ol, dl, table, figure { margin: 0; }
   max-width: 34em;
   margin: 0 auto var(--e3);
 }
-:is(.zona-fosca, .hero) .mapa__avis { color: var(--gris-fosc); }
+:is(.zona-fosca, .hero, .banda-foto) .mapa__avis { color: var(--gris-fosc); }
 
 /* ---------- Formulari --------------------------------------------------- */
 
@@ -959,6 +1147,6 @@ p, ul, ol, dl, table, figure { margin: 0; }
   .capcalera, .flotant, .comanda, .mapa, .navegacio { display: none; }
   body { background: #fff; color: #000; }
   .zona-fosca, .hero { background: #fff; color: #000; }
-  :is(.zona-fosca, .hero) h1, :is(.zona-fosca, .hero) h2, :is(.zona-fosca, .hero) h3, .hero__titol { color: #000; }
+  :is(.zona-fosca, .hero, .banda-foto) h1, :is(.zona-fosca, .hero, .banda-foto) h2, :is(.zona-fosca, .hero, .banda-foto) h3, .hero__titol { color: #000; }
   .plat__control { display: none; }   /* els controls no s'imprimeixen; els plats, tots */
 }

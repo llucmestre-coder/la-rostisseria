@@ -118,26 +118,45 @@ correu d'error cada dia. Les instruccions són al capdamunt del mateix fitxer.
 
 ---
 
-## Fotografies: el que falta
+## Fotografies: es posen soles
 
-**Aquesta web no porta ni una sola fotografia, i és una decisió, no un oblit.**
-No se n'ha pogut recuperar cap del negoci, i posar-hi fotos d'estoc d'un altre
-local hauria estat ensenyar una cuina que no és la seva. Per això el disseny
-s'aguanta sobre el rètol i la tipografia.
+La web té **sis espais de fotografia** repartits pel disseny. Per posar-hi una
+foto **no cal tocar codi**: n'hi ha prou de deixar el fitxer a
+`assets/fotos/` amb el nom exacte que toca.
 
-Amb **quatre fotos fetes amb el mòbil** la web fa un salt enorme. Per ordre
-d'importància:
-
-| # | Foto | On aniria |
+| Fitxer | Quina foto | On surt |
 |---|---|---|
-| 1 | El rostidor amb els pollastres girant | Fons del hero de l'inici |
-| 2 | El taulell amb les safates de plats del dia | Secció «Què hi trobareu» |
-| 3 | Un pollastre a l'ast acabat de treure | Capçalera de la carta |
-| 4 | La façana del local des del carrer | Secció «On som» |
+| `rostidor.jpg` | El rostidor amb els pollastres girant | Inici, tira de tres |
+| `taulell.jpg` | El taulell amb les safates del dia | Inici, tira de tres |
+| `facana.jpg` | La façana des del carrer | Inici, tira de tres |
+| `equip.jpg` | Qui hi ha darrere el taulell (**vertical**) | Inici, «La casa» |
+| `pollastre.jpg` | Un pollastre acabat de treure | Inici, banda ampla |
+| `plats.jpg` | Plats preparats per emportar | Capçalera de la carta |
 
-Recomanacions: **horitzontals**, amb llum de dia, sense flaix, i el fitxer
-original sense retallar (mínim 1600 px d'ample). Res de fotos del perfil de
-Google: bona part són de clients i no són de la casa.
+Les instruccions per al client, escrites perquè les pugui llegir ell, són a
+**`assets/fotos/LLEGIU-ME.txt`**.
+
+**Mentre en falti alguna**, al seu lloc hi ha un rètol negre amb la marca de la
+casa que diu quina foto hi anirà i que està pendent. No és una caixa grisa: és
+un espai dissenyat, i la pàgina es pot ensenyar tal com està.
+
+Com funciona per dins: `js/main.js` mira si existeix `assets/fotos/<nom>.jpg` i,
+si hi és, el posa al lloc del rètol. Va en aquesta direcció i no a l'inrevés a
+posta — si el JavaScript no arrenca, es veu el rètol, que és presentable, i no
+la icona d'imatge trencada. **Mentre falti alguna foto, la consola del navegador
+ensenyarà un 404 per cadascuna**: és esperat i desapareix sol.
+
+⚠️ **Les fotos del perfil de Google del negoci no es poden fer servir.** Bona
+part les han penjat clients i no són de la casa.
+
+### La banda ampla i el text a sobre
+
+`pollastre.jpg` porta text a sobre. El vel que hi ha entremig està calculat
+perquè el text es llegeixi **amb qualsevol foto**, no només amb una de fosca:
+s'ha provat amb una foto blanca del tot i el text blanc s'hi manté a 14,6:1 al
+mòbil i entre 16,5:1 i 9,3:1 a l'ordinador. Per això la nota de Google va dins
+d'un bloc vermell opac i no en vermell sobre la foto: així el contrast no depèn
+de la imatge que s'hi posi.
 
 ---
 
@@ -156,7 +175,8 @@ Google: bona part són de clients i no són de la casa.
   blanc `#FFFFFF` i el vermell de la cresta `#CE2832`. Tots els contrastos
   compleixen el nivell AA.
 - **Sense JavaScript la web funciona igual**: es llegeix tot, inclosa la carta
-  sencera. El compositor de comanda és una millora que s'hi afegeix a sobre.
+  sencera, i als espais de foto s'hi veu el rètol dissenyat. El compositor de
+  comanda i el pas de rètol a fotografia són millores que s'hi afegeixen a sobre.
 - **El compositor no envia cap comanda i ho diu.** Només escriu la llista. La
   comanda queda feta quan la confirma la casa.
 - Provat a 375, 768 i 1440 px d'amplada.

@@ -1,0 +1,48 @@
+LES FOTOGRAFIES DE LA WEB
+=========================
+
+Deixeu els fitxers EN AQUESTA CARPETA amb aquests noms exactes i apareixeran
+sols a la web. No cal tocar cap línia de codi ni avisar ningú.
+
+  rostidor.jpg    El rostidor amb els pollastres girant         → inici, tira de tres
+  taulell.jpg     El taulell amb les safates dels plats del dia → inici, tira de tres
+  facana.jpg      La façana des del carrer                      → inici, tira de tres
+  equip.jpg       Qui hi ha darrere el taulell                  → inici, secció «La casa»
+  pollastre.jpg   Un pollastre acabat de treure                 → inici, banda ampla
+  plats.jpg       Plats preparats per emportar                  → capçalera de la carta
+
+Mentre en falti alguna, al seu lloc hi ha un rètol negre amb la marca de la
+casa que diu quina foto hi anirà. No és cap error: és a posta, perquè la
+pàgina es pugui ensenyar igualment.
+
+
+COM HAN DE SER
+--------------
+
+  · El nom del fitxer, EXACTAMENT com surt a la llista: tot en minúscules,
+    acabat en .jpg i sense accents. «facana.jpg», no «façana.jpg».
+
+  · HORITZONTALS totes, menys «equip.jpg», que queda millor VERTICAL.
+
+  · Amb llum de dia i SENSE FLAIX. La llum del rostidor ja fa la feina.
+
+  · Com més grans millor: mínim 1600 píxels d'ample. Envieu-les SENSE
+    COMPRIMIR (per WhatsApp, com a «document»; si no, les redueix).
+
+  · «pollastre.jpg» porta text a sobre, a l'esquerra. Val més que aquella
+    banda de la foto no tingui res important.
+
+
+QUINA ÉS LA MÉS IMPORTANT
+-------------------------
+
+«rostidor.jpg». És la primera que veu qui entra i és el que no té ningú més:
+els pollastres girant. Si només se'n pot fer una, que sigui aquesta.
+
+
+UNA COSA QUE NO ES POT FER
+--------------------------
+
+No es poden agafar les fotos del perfil de Google del negoci. Bona part les
+han penjat els clients i no són de la casa: no es distingeixen, però no són
+seves. Han de ser fotos fetes per vosaltres.
