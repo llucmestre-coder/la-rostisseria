@@ -1,0 +1,10 @@
+# Documents interns — el repo serà públic i el client el pot llegir
+PLA.md
+PLA*.md
+REUNIO-CLIENT.md
+PRIMER-CONTACTE.md
+prompts/
+
+# Material de recerca recuperat de l'arxiu, no per publicar
+assets/web-antiga-*.html
+assets/logo-original-arxiu.jpg

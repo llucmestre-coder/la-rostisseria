@@ -1,0 +1,11 @@
+# ⚠️ MENTRE SIGUI UNA MAQUETA: aquesta web no s'ha d'indexar.
+#
+# Encara hi ha contingut marcat com a PENDENT-CLIENT (al·lèrgens, mitjans de
+# pagament, entrega a domicili) i la carta no és la sencera. Si Google
+# l'indexés ara, aquestes pàgines competirien amb la web bona.
+#
+# ⚠️ ESBORRAR AQUEST FITXER SENCER en publicar al domini definitiu.
+#    Val per als DOS allotjaments (GitHub Pages i Cloudflare Pages).
+
+User-agent: *
+Disallow: /

@@ -1,0 +1,964 @@
+/* =========================================================================
+   LA ROSTISSERIA — L'Ametlla del Vallès
+   Full d'estil únic. Cap dependència externa: les tipografies són al mateix
+   domini (assets/fonts/) amb la llicència OFL al costat.
+
+   La identitat surt del seu logotip, mostrejat píxel a píxel:
+     fons #000000 (30.383 px) · lletra #FFFFFF (10.085 px) · cresta #CE2832.
+   Vegeu PLA.md §2 per a la justificació de cada color.
+   ========================================================================= */
+
+/* ---------- Tipografies allotjades ------------------------------------- */
+
+@font-face {
+  font-family: 'Archivo Black';
+  src: url('../assets/fonts/archivo-black-latin-ext.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                 U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                 U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo Black';
+  src: url('../assets/fonts/archivo-black-latin.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('../assets/fonts/newsreader-latin-ext.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                 U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                 U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('../assets/fonts/newsreader-latin.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Tokens ------------------------------------------------------ */
+
+:root {
+  /* Colors mostrejats del seu logotip */
+  --negre: #000000;
+  --blanc: #ffffff;
+  --cresta: #ce2832;
+
+  /* Derivats, amb el motiu escrit */
+  --cresta-clar: #f2545b;   /* la seva cresta sobre negre fa 3,97:1 i no passa AA; aquesta fa 6,19:1 */
+  --paper: #f2f1ee;         /* el paper de la bossa i del full de comanda */
+  --fum: #55504b;           /* text secundari sobre paper: 7,05:1 */
+  --tinta: #1a1614;         /* text de cos sobre paper: 15,9:1 */
+  --paper-fosc: #e6e3dd;    /* separacions dins de les zones clares */
+  --gris-fosc: #c9c4bd;     /* text secundari sobre negre: 12,1:1 */
+
+  --linia: rgba(26, 22, 20, 0.16);
+  --linia-fosca: rgba(255, 255, 255, 0.18);
+
+  /* Tipografia */
+  --lletra-display: 'Archivo Black', 'Arial Black', 'Helvetica Neue', Impact, sans-serif;
+  --lletra-cos: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --cos: 1.0625rem;         /* 17px */
+  --alt-cos: 1.65;
+
+  /* Dos trackings i prou */
+  --track-ample: 0.16em;    /* rètols petits en caixa alta */
+  --track-estret: -0.015em; /* titulars grans */
+
+  /* Espais */
+  --e1: 0.5rem;
+  --e2: 0.875rem;
+  --e3: 1.375rem;
+  --e4: 2.25rem;
+  --e5: 3.25rem;
+  --v-blocs: 1.75rem;       /* buit entre blocs de DINS d'una secció */
+  --v-seccio: 5.5rem;       /* buit ENTRE seccions: clarament més gran */
+  --v-hero: 3.5rem;         /* el hero va més arrapat: el botó ha de quedar per sobre del plec */
+  --ample: 68rem;
+  --ample-estret: 44rem;
+
+  --transicio: 160ms ease;
+}
+
+@media (min-width: 48em) {
+  :root {
+    --v-blocs: 2.25rem;
+    --v-seccio: 7rem;
+    --v-hero: 4.5rem;
+  }
+}
+
+/* ---------- Base -------------------------------------------------------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--tinta);
+  font-family: var(--lletra-cos);
+  font-size: var(--cos);
+  line-height: var(--alt-cos);
+  font-optical-sizing: auto;
+}
+
+img,
+svg { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--lletra-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--track-estret);
+  line-height: 1.04;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 { font-size: clamp(2.2rem, 7.6vw, 4.15rem); }
+h2 { font-size: clamp(1.75rem, 5vw, 2.9rem); }
+h3 { font-size: clamp(1.15rem, 2.6vw, 1.45rem); }
+h4 { font-size: 1rem; }
+
+p, ul, ol, dl, table, figure { margin: 0; }
+
+::selection { background: var(--cresta); color: var(--blanc); }
+
+:focus-visible {
+  outline: 3px solid var(--cresta);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+:is(.zona-fosca, .hero) :focus-visible { outline-color: var(--cresta-clar); }
+
+.salta-al-contingut {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--cresta);
+  color: var(--blanc);
+  padding: var(--e2) var(--e3);
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.8rem;
+}
+.salta-al-contingut:focus { left: 0; }
+
+.nomes-lector {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Estructura i ritme vertical --------------------------------- */
+
+.envolt {
+  width: min(100% - 2.5rem, var(--ample));
+  margin-inline: auto;
+}
+.envolt--estret { max-width: var(--ample-estret); }
+
+.seccio { padding-block: var(--v-seccio); }
+
+/* El ritme vertical viu en aquestes dues regles i enlloc més: la primera per
+   als blocs d'una secció, la segona per a les columnes de dins. Res de pedaços
+   secció per secció. */
+.seccio > .envolt > * + * { margin-top: var(--v-blocs); }
+.pila > * + * { margin-top: var(--v-blocs); }
+
+.zona-fosca {
+  background: var(--negre);
+  color: var(--paper);
+}
+:is(.zona-fosca, .hero) h1,
+:is(.zona-fosca, .hero) h2,
+:is(.zona-fosca, .hero) h3 { color: var(--blanc); }
+
+/* ---------- Rètols petits ----------------------------------------------- */
+
+.retol {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.7rem;
+  color: var(--cresta);
+  margin: 0;
+}
+:is(.zona-fosca, .hero) .retol { color: var(--cresta-clar); }
+
+.retol--numerat::before {
+  content: attr(data-num);
+  color: var(--fum);
+  margin-right: 0.75em;
+}
+:is(.zona-fosca, .hero) .retol--numerat::before { color: var(--gris-fosc); }
+
+.entradeta {
+  font-size: 1.2rem;
+  color: var(--fum);
+  max-width: 36em;
+}
+:is(.zona-fosca, .hero) .entradeta { color: var(--gris-fosc); }
+
+/* ---------- Botons ------------------------------------------------------ */
+
+.boto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 1.05em 1.5em;
+  border: 2px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transicio), color var(--transicio), border-color var(--transicio);
+}
+
+.boto--principal {
+  background: var(--cresta);
+  color: var(--blanc);            /* 5,28:1 */
+  border-color: var(--cresta);
+}
+.boto--principal:hover { background: #a81f28; border-color: #a81f28; }
+
+.boto--contorn {
+  background: transparent;
+  color: var(--tinta);
+  border-color: var(--tinta);
+}
+.boto--contorn:hover { background: var(--tinta); color: var(--paper); }
+
+:is(.zona-fosca, .hero) .boto--contorn { color: var(--blanc); border-color: var(--blanc); }
+:is(.zona-fosca, .hero) .boto--contorn:hover { background: var(--blanc); color: var(--negre); }
+
+.boto--petit { font-size: 0.7rem; padding: 0.8em 1.1em; }
+
+.boto[disabled] { opacity: 0.45; cursor: default; }
+.boto--principal[disabled]:hover { background: var(--cresta); border-color: var(--cresta); }
+
+.grup-botons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e2);
+}
+
+/* ---------- Capçalera --------------------------------------------------- */
+
+.capcalera {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--negre);
+  border-bottom: 1px solid var(--linia-fosca);
+}
+
+.capcalera__envolt {
+  width: min(100% - 2.5rem, var(--ample));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  min-height: 4.25rem;
+}
+
+.marca { display: block; flex: 0 0 auto; }
+.marca img { width: 190px; height: 36px; }
+
+@media (min-width: 48em) {
+  .marca img { width: 232px; height: 44px; }
+}
+
+.navegacio { margin-left: auto; }
+
+.navegacio__llista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+}
+
+.navegacio__enllac {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.72rem;
+  color: var(--blanc);
+  text-decoration: none;
+  padding-block: 0.6rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--transicio), color var(--transicio);
+}
+.navegacio__enllac:hover { border-bottom-color: var(--cresta-clar); }
+.navegacio__enllac[aria-current='page'] {
+  color: var(--cresta-clar);
+  border-bottom-color: var(--cresta-clar);
+}
+
+.obre-menu {
+  margin-left: auto;
+  display: none;
+  background: transparent;
+  border: 2px solid var(--blanc);
+  color: var(--blanc);
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.7rem;
+  padding: 0.7em 0.9em;
+  cursor: pointer;
+}
+
+@media (max-width: 47.99em) {
+  .obre-menu { display: block; }
+  .navegacio {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--negre);
+    border-bottom: 3px solid var(--cresta);
+    margin-left: 0;
+  }
+  .navegacio[hidden] { display: none; }
+  .navegacio__llista {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--e2) 1.25rem var(--e3);
+  }
+  .navegacio__enllac {
+    display: block;
+    font-size: 0.95rem;
+    padding-block: 0.9rem;
+    border-bottom: 1px solid var(--linia-fosca);
+  }
+}
+
+/* ---------- Hero -------------------------------------------------------- */
+
+.hero {
+  background: var(--negre);
+  color: var(--paper);
+  padding-block: var(--v-hero);
+  border-bottom: 4px solid var(--cresta);
+}
+
+.hero__graella {
+  display: grid;
+  gap: var(--e5);
+  align-items: start;
+}
+
+@media (min-width: 60em) {
+  .hero__graella {
+    grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.85fr);
+    gap: var(--e5);
+  }
+}
+
+.hero__titol { color: var(--blanc); }
+.hero__titol em {
+  font-style: normal;
+  color: var(--cresta-clar);
+}
+
+.hero__text {
+  margin-top: var(--e3);
+  font-size: 1.25rem;
+  color: var(--gris-fosc);
+  max-width: 30em;
+}
+
+.hero__botons { margin-top: var(--e4); }
+
+/* El full de comanda: la fitxa de paper sobre el negre del rètol. */
+.full {
+  background: var(--paper);
+  color: var(--tinta);
+  padding: var(--e4);
+  border-top: 6px solid var(--cresta);
+}
+
+.full__estat {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+}
+.full__estat[data-obert='si'] { color: #1f6b2f; }
+.full__estat[data-obert='no'] { color: var(--cresta); }
+
+.full__frase {
+  margin-top: var(--e1);
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.horaris {
+  margin-top: var(--e3);
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+.horaris th,
+.horaris td {
+  text-align: left;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--linia);
+  font-weight: 400;
+}
+.horaris td { text-align: right; font-variant-numeric: tabular-nums; }
+.horaris tr[data-avui='si'] th,
+.horaris tr[data-avui='si'] td { font-weight: 600; }
+.horaris tr[data-avui='si'] th::after {
+  content: ' · avui';
+  color: var(--cresta);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+}
+
+.full .camp__ajuda { margin-top: var(--e2); }
+.full .grup-botons { margin-top: var(--e3); }
+
+/* ---------- Marcador de contingut pendent del client --------------------
+   Ha de cridar l'atenció i no s'ha de poder confondre amb text de la web.
+   Si algun dia es treu el marcador, s'han de treure també les dades: mai
+   contingut d'exemple sense distintiu (§8.A del playbook).             -- */
+
+.pendent {
+  border-left: 4px solid var(--cresta);
+  background: var(--paper-fosc);
+  padding: var(--e2) var(--e3);
+  font-size: 0.95rem;
+  color: var(--fum);
+}
+.pendent::before {
+  content: '⚠ ';
+  color: var(--cresta);
+}
+
+/* ---------- Banda del lema ---------------------------------------------- */
+
+.lema {
+  background: var(--cresta);
+  color: var(--blanc);
+  padding-block: var(--e3);
+  text-align: center;
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: clamp(0.8rem, 2.4vw, 1.05rem);
+}
+
+/* ---------- Categories de la carta (a l'inici) -------------------------- */
+
+.categories {
+  display: grid;
+  gap: 1px;
+  background: var(--linia);
+  border-block: 1px solid var(--linia);
+}
+
+@media (min-width: 40em) {
+  .categories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 64em) {
+  .categories { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.categoria {
+  background: var(--paper);
+  padding: var(--e4) var(--e3);
+}
+
+.categoria__titol { margin-top: var(--e2); }
+
+.categoria__llista {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--e3);
+  font-size: 1.05rem;
+}
+.categoria__llista li {
+  padding-block: 0.45rem;
+  border-top: 1px solid var(--linia);
+}
+.categoria__llista li:first-child { border-top: 0; }
+
+/* ---------- Passos ------------------------------------------------------ */
+
+.passos {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--e4);
+  counter-reset: pas;
+}
+
+@media (min-width: 48em) {
+  .passos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--e5); }
+}
+
+.pas { counter-increment: pas; }
+.pas::before {
+  content: counter(pas, decimal-leading-zero);
+  display: block;
+  font-family: var(--lletra-display);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--cresta);
+  margin-bottom: var(--e2);
+}
+:is(.zona-fosca, .hero) .pas::before { color: var(--cresta-clar); }
+.pas h3 { margin-bottom: var(--e1); }
+
+/* ---------- Declaració (la seva promesa de casolà) ---------------------- */
+
+.declaracio {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  font-size: clamp(1.5rem, 4.6vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: var(--track-estret);
+  color: var(--blanc);
+  text-wrap: balance;
+}
+.declaracio strong { color: var(--cresta-clar); font-weight: inherit; }
+
+/* ---------- Prova social ------------------------------------------------ */
+
+.valoracio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--e2) var(--e3);
+}
+.valoracio__nota {
+  font-family: var(--lletra-display);
+  font-size: clamp(3rem, 10vw, 4.5rem);
+  line-height: 1;
+  color: var(--cresta);
+}
+.valoracio__detall { font-size: 1.1rem; color: var(--fum); }
+
+/* ---------- Preguntes freqüents ----------------------------------------- */
+
+.faq { border-top: 1px solid var(--linia); }
+
+.faq__item { border-bottom: 1px solid var(--linia); }
+
+.faq__pregunta {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-estret);
+  font-size: 1rem;
+  padding: var(--e3) 2.5rem var(--e3) 0;
+  cursor: pointer;
+  position: relative;
+  list-style: none;
+}
+.faq__pregunta::-webkit-details-marker { display: none; }
+.faq__pregunta::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cresta);
+  font-size: 1.5rem;
+}
+.faq__item[open] .faq__pregunta::after { content: '–'; }
+
+.faq__resposta { padding-bottom: var(--e3); max-width: 46em; }
+.faq__resposta > * + * { margin-top: var(--e2); }
+
+/* ---------- Contacte ---------------------------------------------------- */
+
+.dades {
+  display: grid;
+  gap: var(--e4);
+}
+@media (min-width: 48em) {
+  .dades { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.dades dt {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.7rem;
+  color: var(--cresta);
+}
+:is(.zona-fosca, .hero) .dades dt { color: var(--cresta-clar); }
+.dades dd { margin: var(--e1) 0 0; font-size: 1.15rem; }
+.dades a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Mapa darrere d'un botó: cap petició a Google fins que el visitant ho demana. */
+.mapa {
+  border: 1px solid var(--linia);
+  padding: var(--e4);
+  text-align: center;
+}
+:is(.zona-fosca, .hero) .mapa { border-color: var(--linia-fosca); }
+.mapa iframe {
+  width: 100%;
+  height: 22rem;
+  border: 0;
+  display: block;
+}
+.mapa__avis {
+  font-size: 0.95rem;
+  color: var(--fum);
+  max-width: 34em;
+  margin: 0 auto var(--e3);
+}
+:is(.zona-fosca, .hero) .mapa__avis { color: var(--gris-fosc); }
+
+/* ---------- Formulari --------------------------------------------------- */
+
+.formulari {
+  display: grid;
+  gap: var(--e3);
+}
+@media (min-width: 40em) {
+  .formulari { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .camp--ample { grid-column: 1 / -1; }
+}
+
+.camp { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.camp label {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.68rem;
+}
+
+.camp input,
+.camp textarea,
+.camp select {
+  font-family: var(--lletra-cos);
+  font-size: 1rem;              /* 16px: evita el zoom d'iOS */
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--tinta);
+  background: var(--blanc);
+  color: var(--tinta);
+  border-radius: 0;
+}
+.camp textarea { min-height: 9rem; resize: vertical; }
+
+.camp__ajuda { font-size: 0.9rem; color: var(--fum); }
+
+.avis-formulari {
+  padding: var(--e3);
+  border-left: 4px solid var(--cresta);
+  background: var(--paper-fosc);
+  font-size: 0.98rem;
+}
+.avis-formulari[hidden] { display: none; }
+
+/* ---------- Carta ------------------------------------------------------- */
+
+.carta__grup { border-top: 2px solid var(--tinta); padding-top: var(--e3); }
+.carta__grup h3 { margin-top: var(--e1); }
+
+.carta__llista {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--e3);
+}
+
+.plat {
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  padding-block: var(--e2);
+  border-top: 1px solid var(--linia);
+}
+.plat:first-child { border-top: 0; }
+
+.plat__nom { font-size: 1.15rem; flex: 1 1 auto; }
+
+/* No hi ha columna de preus: el negoci encara no ha dit si en vol publicar,
+   i abans que una xifra inventada, cap xifra. */
+
+/* Controls que hi afegeix comanda.js. Sense JS, el plat es llegeix igual. */
+.plat__control {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex: 0 0 auto;
+}
+
+.quantitat {
+  width: 2.4rem;
+  text-align: center;
+  font-family: var(--lletra-display);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pas-quantitat {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 2px solid var(--tinta);
+  background: transparent;
+  color: var(--tinta);
+  font-family: var(--lletra-display);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transicio), color var(--transicio);
+}
+.pas-quantitat:hover { background: var(--tinta); color: var(--paper); }
+.pas-quantitat[disabled] { opacity: 0.3; cursor: default; }
+.pas-quantitat[disabled]:hover { background: transparent; color: var(--tinta); }
+
+.plat[data-triat='si'] { background: var(--paper-fosc); }
+
+/* ---------- El compositor de comanda (element signatura) ---------------- */
+
+.comanda {
+  position: sticky;
+  bottom: 0;
+  z-index: 40;
+  background: var(--negre);
+  color: var(--paper);
+  border-top: 4px solid var(--cresta);
+}
+.comanda[hidden] { display: none; }
+
+.comanda__envolt {
+  width: min(100% - 2.5rem, var(--ample));
+  margin-inline: auto;
+  padding-block: var(--e3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e2) var(--e3);
+}
+
+.comanda__recompte {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.78rem;
+  color: var(--blanc);
+  flex: 1 1 12rem;
+}
+.comanda__recompte span { color: var(--cresta-clar); }
+
+.comanda__accions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e2);
+  margin-left: auto;
+}
+
+/* Full de comanda escrit */
+.resum {
+  border: 0;
+  padding: 0;
+  margin: auto;            /* el <dialog> es centra amb margin auto; posar-hi 0 el clava a dalt a l'esquerra */
+  max-width: 34rem;
+  width: calc(100% - 2rem);
+  max-height: 88vh;
+  overflow: auto;
+  background: var(--paper);
+  color: var(--tinta);
+}
+.resum::backdrop { background: rgba(0, 0, 0, 0.7); }
+
+.resum__cos { padding: var(--e4); }
+
+.resum__llista {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--e3);
+  font-size: 1.05rem;
+}
+.resum__llista li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--e3);
+  padding-block: 0.4rem;
+  border-top: 1px solid var(--linia);
+}
+.resum__llista li span { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+.resum__nota {
+  margin-top: var(--e3);
+  font-size: 0.95rem;
+  color: var(--fum);
+  border-left: 4px solid var(--cresta);
+  padding-left: var(--e2);
+}
+
+.resum__accions {
+  margin-top: var(--e4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e2);
+}
+
+/* ---------- Contacte flotant -------------------------------------------- */
+
+.flotant {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  background: var(--cresta);
+  color: var(--blanc);
+  text-decoration: none;
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.75rem;
+  padding: 1em 1.2em;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+.flotant:hover { background: #a81f28; }
+
+/* Quan la barra de comanda és a la vista, el botó flotant li puja per sobre.
+   Si la barra està amagada (encara no s'ha marcat res), es queda avall. */
+.comanda:not([hidden]) ~ .flotant { bottom: 6.5rem; }
+
+@media (max-width: 47.99em) {
+  /* Al mòbil la barra de comanda ocupa dues línies i el flotant hi queia a
+     sobre. Mentre la barra hi sigui, el canal ràpid ja és la barra: dins del
+     full de comanda hi ha el botó de trucar. */
+  .comanda:not([hidden]) ~ .flotant { display: none; }
+}
+
+/* ---------- Peu --------------------------------------------------------- */
+
+.peu {
+  background: var(--negre);
+  color: var(--gris-fosc);
+  padding-block: var(--e5);
+  font-size: 0.98rem;
+}
+
+.peu__graella {
+  display: grid;
+  gap: var(--e4);
+}
+@media (min-width: 48em) {
+  .peu__graella { grid-template-columns: 1.2fr 1fr 1fr; }
+}
+
+.peu a { color: var(--blanc); text-underline-offset: 3px; }
+.peu a:hover { color: var(--cresta-clar); }
+
+.peu__titol {
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.7rem;
+  color: var(--cresta-clar);
+  margin-bottom: var(--e2);
+}
+
+.peu__llista { list-style: none; padding: 0; }
+.peu__llista li + li { margin-top: 0.45rem; }
+
+.peu__nota {
+  margin-top: var(--e4);
+  padding-top: var(--e3);
+  border-top: 1px solid var(--linia-fosca);
+  font-size: 0.85rem;
+}
+
+/* ---------- Pàgines legals ---------------------------------------------- */
+
+.legal { padding-block: var(--v-seccio); }
+.legal h2 { font-size: 1.35rem; margin-top: var(--e4); }
+.legal p, .legal ul { margin-top: var(--e3); max-width: 44em; }
+.legal ul { padding-left: 1.25rem; }
+.legal li + li { margin-top: 0.5rem; }
+
+/* ---------- Revelacions (millora progressiva) --------------------------- */
+
+.apareix {
+  opacity: 1;
+  transform: none;
+}
+
+.te-js .apareix {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+.te-js .apareix.vist {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Moviment reduït --------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;   /* cal !important: guanya a qualsevol animació declarada */
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .te-js .apareix { opacity: 1; transform: none; }
+}
+
+/* ---------- Impressió ---------------------------------------------------- */
+
+@media print {
+  .capcalera, .flotant, .comanda, .mapa, .navegacio { display: none; }
+  body { background: #fff; color: #000; }
+  .zona-fosca, .hero { background: #fff; color: #000; }
+  :is(.zona-fosca, .hero) h1, :is(.zona-fosca, .hero) h2, :is(.zona-fosca, .hero) h3, .hero__titol { color: #000; }
+  .plat__control { display: none; }   /* els controls no s'imprimeixen; els plats, tots */
+}

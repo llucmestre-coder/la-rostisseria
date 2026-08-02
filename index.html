@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Rostisseria — Pollastres a l'ast i cuina casolana per emportar a L'Ametlla del Vallès</title>
+<meta name="description" content="Rostisseria L'Ametlla: pollastres a l'ast, conill i garrí rostits, arrossos, croquetes i plats fets el mateix dia, per emportar. Carrer Major, 24, L'Ametlla del Vallès. De dimarts a diumenge.">
+<link rel="canonical" href="https://la-rostisseria.pages.dev/">
+
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="ca_ES">
+<meta property="og:title" content="La Rostisseria — cuina casolana per emportar a L'Ametlla del Vallès">
+<meta property="og:description" content="Pollastres a l'ast, rostits, arrossos i plats fets el mateix dia. Carrer Major, 24. De dimarts a diumenge.">
+<meta property="og:url" content="https://la-rostisseria.pages.dev/">
+<meta property="og:image" content="https://la-rostisseria.pages.dev/assets/logo.jpg">
+
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="salta-al-contingut" href="#contingut">Salta al contingut</a>
+
+<header class="capcalera">
+  <div class="capcalera__envolt">
+    <a class="marca" href="index.html">
+      <img src="assets/logo.jpg" alt="La Rostisseria — cuina casolana" width="232" height="44" fetchpriority="high">
+    </a>
+    <button class="obre-menu" type="button" id="obre-menu" aria-expanded="false" aria-controls="navegacio">Menú</button>
+    <nav class="navegacio" id="navegacio" aria-label="Principal">
+      <ul class="navegacio__llista">
+        <li><a class="navegacio__enllac" href="index.html" aria-current="page">Inici</a></li>
+        <li><a class="navegacio__enllac" href="carta.html">La carta</a></li>
+        <li><a class="navegacio__enllac" href="encarrecs.html">Encàrrecs</a></li>
+        <li><a class="navegacio__enllac" href="#contacte">On som</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contingut">
+
+  <section class="hero">
+    <div class="envolt">
+      <div class="hero__graella">
+        <div>
+          <h1 class="hero__titol">Cuina casolana <em>per emportar</em></h1>
+          <p class="hero__text">
+            Pollastres a l'ast, conill i garrí rostits, arrossos i plats fets el
+            mateix dia. Al Carrer Major de L'Ametlla del Vallès des del 2016.
+          </p>
+          <div class="hero__botons grup-botons">
+            <a class="boto boto--principal" href="carta.html">Veure la carta i demanar</a>
+            <a class="boto boto--contorn" href="tel:+34938432649">Trucar · 938 43 26 49</a>
+          </div>
+        </div>
+
+        <div class="full">
+          <p class="full__estat" id="estat" data-obert="">Horari</p>
+          <p class="full__frase" id="estat-frase">Obrim de dimarts a diumenge al matí.</p>
+          <table class="horaris">
+            <caption class="nomes-lector">Horari d'obertura</caption>
+            <tbody>
+              <tr data-dia="1"><th scope="row">Dilluns</th><td>Tancat</td></tr>
+              <tr data-dia="2"><th scope="row">Dimarts</th><td>10:00 – 15:30</td></tr>
+              <tr data-dia="3"><th scope="row">Dimecres</th><td>10:00 – 15:30</td></tr>
+              <tr data-dia="4"><th scope="row">Dijous</th><td>10:00 – 15:30</td></tr>
+              <tr data-dia="5"><th scope="row">Divendres</th><td>10:00 – 15:30</td></tr>
+              <tr data-dia="6"><th scope="row">Dissabte</th><td>10:00 – 15:00</td></tr>
+              <tr data-dia="0"><th scope="row">Diumenge</th><td>10:00 – 15:00</td></tr>
+            </tbody>
+          </table>
+          <p class="camp__ajuda">Els festius, de 10:00 a 15:00.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="lema">Cuina casolana · L'Ametlla del Vallès · Des del 2016</p>
+
+  <section class="seccio" aria-labelledby="t-carta">
+    <div class="envolt">
+      <p class="retol">Què hi trobareu</p>
+      <h2 id="t-carta">La casa és de rostits, però no només</h2>
+      <p class="entradeta">
+        Aquesta és l'oferta que la casa ha anat fent des que va obrir. La llista
+        completa del dia, al taulell i a la carta.
+      </p>
+
+      <!-- Els plats d'aquesta secció i de carta.html són EXACTAMENT els que el
+           negoci anomena a la seva pròpia web (larostisseria.net, recuperada de
+           l'Internet Archive). No n'hi ha cap d'inventat i no hi ha cap preu.
+           PENDENT-CLIENT: la llista sencera i la decisió sobre els preus. -->
+      <div class="categories apareix">
+        <article class="categoria">
+          <p class="retol retol--numerat" data-num="01">Rostits</p>
+          <h3 class="categoria__titol">A l'ast, cada dia</h3>
+          <ul class="categoria__llista">
+            <li>Pollastre a l'ast</li>
+            <li>Conill rostit</li>
+            <li>Garrí rostit</li>
+          </ul>
+        </article>
+        <article class="categoria">
+          <p class="retol retol--numerat" data-num="02">Arrossos</p>
+          <h3 class="categoria__titol">De paella</h3>
+          <ul class="categoria__llista">
+            <li>Paella</li>
+            <li>Fideuà</li>
+            <li>Arròs negre</li>
+          </ul>
+        </article>
+        <article class="categoria">
+          <p class="retol retol--numerat" data-num="03">Plats cuinats</p>
+          <h3 class="categoria__titol">Fets el mateix dia</h3>
+          <ul class="categoria__llista">
+            <li>Fricandó</li>
+            <li>Cargols</li>
+            <li>Canelons de carn</li>
+            <li>Canelons d'altres varietats</li>
+          </ul>
+        </article>
+        <article class="categoria">
+          <p class="retol retol--numerat" data-num="04">Croquetes</p>
+          <h3 class="categoria__titol">Les de tota la vida</h3>
+          <ul class="categoria__llista">
+            <li>Croquetes de carn d'olla</li>
+            <li>Croquetes de pollastre</li>
+          </ul>
+        </article>
+        <article class="categoria">
+          <p class="retol retol--numerat" data-num="05">Per acompanyar</p>
+          <h3 class="categoria__titol">El que hi va al costat</h3>
+          <ul class="categoria__llista">
+            <li>Patates al caliu</li>
+          </ul>
+        </article>
+        <article class="categoria">
+          <p class="retol retol--numerat" data-num="06">I també</p>
+          <h3 class="categoria__titol">Per completar el dinar</h3>
+          <ul class="categoria__llista">
+            <li>Pa acabat de fer</li>
+            <li>Begudes</li>
+            <li>Gelats</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="grup-botons">
+        <a class="boto boto--principal" href="carta.html">Anar a la carta i fer la comanda</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccio zona-fosca" aria-labelledby="t-com">
+    <div class="envolt">
+      <p class="retol">Com es demana</p>
+      <h2 id="t-com">Ho trieu, ens ho passeu i ho veniu a buscar</h2>
+      <ol class="passos apareix">
+        <li class="pas">
+          <h3>Trieu a la carta</h3>
+          <p>A la carta podeu anar marcant el que voleu i quantes unitats. La web
+             us escriu la comanda sencera, sense haver-la de recordar.</p>
+        </li>
+        <li class="pas">
+          <h3>Ens ho feu arribar</h3>
+          <p>Amb un botó se us obre el WhatsApp amb la llista ja escrita, o ens
+             truqueu i ens la llegiu. Us confirmem nosaltres a quina hora la
+             teniu a punt.</p>
+        </li>
+        <li class="pas">
+          <h3>Ho recolliu al taulell</h3>
+          <p>Passeu a buscar-ho dins de l'horari, de dimarts a diumenge al matí.
+             Es paga aquí mateix.</p>
+        </li>
+      </ol>
+      <p class="entradeta">
+        La comanda no queda feta fins que us la confirmem nosaltres: la web només
+        us l'escriu.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccio" aria-labelledby="t-casola">
+    <div class="envolt envolt--estret">
+      <p class="retol">La casa</p>
+      <h2 id="t-casola">Casolà vol dir cuinat aquí</h2>
+      <p>
+        Vam obrir el 2016 al Carrer Major. Des d'aleshores fem el mateix: cuina
+        de casa, feta el mateix dia, amb producte de primera i sense greixos ni
+        additius afegits. Els controls sanitaris els passem nosaltres, pel nostre
+        compte i periòdicament, perquè el que us emporteu arribi com ha d'arribar.
+      </p>
+      <!-- «conegudes» i «famós» són paraules seves: la seva web deia que les
+           croquetes «ja són conegudes per tot arreu» i parlava del «nostre famós
+           fricandó». No s'hi afegeix cap superlatiu que ells no diguin: «el que
+           més es ven» no ho sabem i no s'escriu. -->
+      <p>
+        Les croquetes de carn d'olla i el fricandó són els que ens han fet
+        coneguts. Bon profit.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccio zona-fosca" aria-labelledby="t-veu">
+    <div class="envolt">
+      <p class="retol">El que en diu la gent</p>
+      <h2 id="t-veu" class="nomes-lector">Valoració a Google</h2>
+      <div class="valoracio">
+        <p class="valoracio__nota" data-valoracio>4,1</p>
+        <p class="valoracio__detall">
+          de mitjana a Google, amb <strong data-nombre-ressenyes>142</strong> ressenyes
+          del veïnat de L'Ametlla i de la rodalia.
+        </p>
+      </div>
+      <p class="declaracio">
+        Deu anys fent <strong>el dinar</strong> de moltes cases del poble.
+      </p>
+      <!-- No hi ha cap ressenya citada a la web: no se n'ha pogut llegir cap a la
+           font amb el text literal. Abans d'afegir-ne, copiar-les lletra per
+           lletra del seu perfil de Google. Vegeu §8.A del playbook. -->
+    </div>
+  </section>
+
+  <section class="seccio" aria-labelledby="t-faq">
+    <div class="envolt">
+      <p class="retol">Preguntes freqüents</p>
+      <h2 id="t-faq">El que ens pregunten més</h2>
+      <div class="faq">
+        <details class="faq__item">
+          <summary class="faq__pregunta">A quina hora tanqueu?</summary>
+          <div class="faq__resposta">
+            <p>De dimarts a divendres, a les 15:30. Dissabtes, diumenges i
+               festius, a les 15:00. Els dilluns no obrim.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__pregunta">Cal encarregar-ho abans?</summary>
+          <div class="faq__resposta">
+            <p>Per al dia a dia podeu passar directament pel taulell dins de
+               l'horari. Per a quantitats grans o per a un dia concret, val més
+               trucar-nos abans al <a href="tel:+34938432649">938 43 26 49</a>.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__pregunta">Teniu informació d'al·lèrgens?</summary>
+          <div class="faq__resposta">
+            <p class="pendent">PENDENT-CLIENT: com voleu que es respongui l'apartat
+              d'al·lèrgens. No es publica cap llista d'al·lèrgens que no ens hagueu
+              donat vosaltres per escrit.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__pregunta">Es pot pagar amb targeta?</summary>
+          <div class="faq__resposta">
+            <p class="pendent">PENDENT-CLIENT: confirmar els mitjans de pagament
+              que accepteu al taulell.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__pregunta">Feu entrega a domicili?</summary>
+          <div class="faq__resposta">
+            <p class="pendent">PENDENT-CLIENT: confirmar si feu entrega a domicili
+              i, si en feu, a quines zones.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__pregunta">Feu encàrrecs per a festes i celebracions?</summary>
+          <div class="faq__resposta">
+            <p>Sí, amb temps. Ens ho podeu dir per telèfon o deixar-nos-ho escrit
+               a la pàgina d'<a href="encarrecs.html">encàrrecs</a>.</p>
+            <p class="pendent">PENDENT-CLIENT: confirmar per a quines dates en feu
+              i amb quants dies d'antelació els necessiteu.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__pregunta">On sou exactament?</summary>
+          <div class="faq__resposta">
+            <p>Al Carrer Major, 24, de L'Ametlla del Vallès, al centre del poble.
+               Teniu el mapa <a href="#contacte">aquí sota</a>.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccio zona-fosca" id="contacte" aria-labelledby="t-contacte">
+    <div class="envolt">
+      <p class="retol">On som</p>
+      <h2 id="t-contacte">Carrer Major, 24</h2>
+      <dl class="dades">
+        <div>
+          <dt>Adreça</dt>
+          <dd>Carrer Major, 24<br>08480 L'Ametlla del Vallès (Barcelona)</dd>
+        </div>
+        <div>
+          <dt>Telèfon</dt>
+          <dd><a href="tel:+34938432649">938 43 26 49</a></dd>
+        </div>
+        <div>
+          <dt>Horari</dt>
+          <dd>Dimarts a divendres, 10:00 – 15:30<br>
+              Dissabte, diumenge i festius, 10:00 – 15:00<br>
+              Dilluns, tancat</dd>
+        </div>
+        <div>
+          <dt>Servei</dt>
+          <dd>Per emportar i comandes per encàrrec</dd>
+        </div>
+      </dl>
+
+      <div class="mapa" data-mapa>
+        <p class="mapa__avis">
+          El mapa el serveix Google i, en carregar-lo, li arriba la vostra adreça
+          IP. Per això no es carrega tot sol: només si l'obriu vosaltres.
+        </p>
+        <button class="boto boto--contorn" type="button" data-obre-mapa>Obrir el mapa</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="peu">
+  <div class="envolt">
+    <div class="peu__graella">
+      <div>
+        <img src="assets/logo.jpg" alt="La Rostisseria" width="232" height="44" loading="lazy">
+        <p class="peu__nota">Cuina casolana per emportar a L'Ametlla del Vallès des del 2016.</p>
+      </div>
+      <div>
+        <p class="peu__titol">Pàgines</p>
+        <ul class="peu__llista">
+          <li><a href="index.html">Inici</a></li>
+          <li><a href="carta.html">La carta</a></li>
+          <li><a href="encarrecs.html">Encàrrecs</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="peu__titol">Contacte</p>
+        <ul class="peu__llista">
+          <li><a href="tel:+34938432649">938 43 26 49</a></li>
+          <li>Carrer Major, 24<br>08480 L'Ametlla del Vallès</li>
+        </ul>
+      </div>
+    </div>
+    <div class="peu__nota">
+      <p>
+        © <span data-any>2026</span> Rostisseria L'Ametlla ·
+        <a href="avis-legal.html">Avís legal</a> ·
+        <a href="politica-privacitat.html">Privacitat</a> ·
+        <a href="politica-cookies.html">Galetes</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- PENDENT-CLIENT: si tenen WhatsApp, aquest botó hi ha d'apuntar. Mentre no
+     estigui confirmat, el canal ràpid és el telèfon: inventar-ne un de fals
+     seria un contacte que no existeix. -->
+<a class="flotant" href="tel:+34938432649">Trucar</a>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Rostisseria L'Ametlla",
+  "alternateName": "La Rostisseria",
+  "url": "https://la-rostisseria.pages.dev/",
+  "image": "https://la-rostisseria.pages.dev/assets/logo.jpg",
+  "logo": "https://la-rostisseria.pages.dev/assets/logo.jpg",
+  "description": "Rostisseria i menjar per emportar a L'Ametlla del Vallès: pollastres a l'ast, conill i garrí rostits, arrossos, croquetes i plats cuinats el mateix dia.",
+  "telephone": "+34938432649",
+  "foundingDate": "2016",
+  "servesCuisine": ["Catalana", "Casolana", "Rostits", "Per emportar"],
+  "priceRange": "10-20 €",
+  "currenciesAccepted": "EUR",
+  "acceptsReservations": "False",
+  "hasMenu": "https://la-rostisseria.pages.dev/carta.html",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Carrer Major, 24",
+    "addressLocality": "L'Ametlla del Vallès",
+    "addressRegion": "Barcelona",
+    "postalCode": "08480",
+    "addressCountry": "ES"
+  },
+  "areaServed": "L'Ametlla del Vallès",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "10:00",
+      "closes": "15:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "10:00",
+      "closes": "15:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.1",
+    "reviewCount": "142",
+    "bestRating": "5"
+  },
+  "potentialAction": {
+    "@type": "OrderAction",
+    "deliveryMethod": "https://schema.org/OnSitePickup",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://la-rostisseria.pages.dev/carta.html",
+      "actionPlatform": [
+        "https://schema.org/DesktopWebPlatform",
+        "https://schema.org/MobileWebPlatform"
+      ]
+    }
+  }
+}
+</script>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

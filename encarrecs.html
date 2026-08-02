@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encàrrecs — Deixeu-nos-ho dit amb temps | La Rostisseria, L'Ametlla del Vallès</title>
+<meta name="description" content="Encàrrecs de rostits i plats casolans per emportar a L'Ametlla del Vallès. Deixeu-nos dit què voleu i per a quin dia, i us ho tenim a punt al taulell.">
+<link rel="canonical" href="https://la-rostisseria.pages.dev/encarrecs.html">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ca_ES">
+<meta property="og:title" content="Encàrrecs — La Rostisseria, L'Ametlla del Vallès">
+<meta property="og:description" content="Deixeu-nos dit què voleu i per a quin dia, i us ho tenim a punt.">
+<meta property="og:url" content="https://la-rostisseria.pages.dev/encarrecs.html">
+<meta property="og:image" content="https://la-rostisseria.pages.dev/assets/logo.jpg">
+
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="salta-al-contingut" href="#contingut">Salta al contingut</a>
+
+<header class="capcalera">
+  <div class="capcalera__envolt">
+    <a class="marca" href="index.html">
+      <img src="assets/logo.jpg" alt="La Rostisseria — cuina casolana" width="232" height="44" fetchpriority="high">
+    </a>
+    <button class="obre-menu" type="button" id="obre-menu" aria-expanded="false" aria-controls="navegacio">Menú</button>
+    <nav class="navegacio" id="navegacio" aria-label="Principal">
+      <ul class="navegacio__llista">
+        <li><a class="navegacio__enllac" href="index.html">Inici</a></li>
+        <li><a class="navegacio__enllac" href="carta.html">La carta</a></li>
+        <li><a class="navegacio__enllac" href="encarrecs.html" aria-current="page">Encàrrecs</a></li>
+        <li><a class="navegacio__enllac" href="index.html#contacte">On som</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contingut">
+
+  <!-- Hero compacte, a propòsit: el formulari ha de quedar per sobre del plec. -->
+  <section class="hero">
+    <div class="envolt">
+      <p class="retol">Encàrrecs</p>
+      <h1 class="hero__titol">Digueu-nos-ho <em>amb temps</em></h1>
+      <p class="hero__text">
+        Per a un dinar de casa, una colla o un dia assenyalat: deixeu-nos dit què
+        voleu i per a quan, i us ho tenim a punt per recollir.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccio" aria-labelledby="t-form">
+    <div class="envolt">
+      <div class="hero__graella">
+        <div class="pila">
+          <p class="retol">Deixeu-nos-ho escrit</p>
+          <h2 id="t-form">L'encàrrec</h2>
+
+          <!-- ⚠️ El formulari NO està connectat: Formspree encara té el codi
+               XXXXXXXX. El JS ho detecta i ho diu; no pot sortir cap missatge
+               d'«enviat» sense que hi hagi hagut una petició de xarxa.
+               PENDENT-CLIENT: correu on han d'arribar els encàrrecs. -->
+          <form class="formulari" id="form-encarrec"
+                action="https://formspree.io/f/XXXXXXXX" method="post" novalidate>
+            <div class="camp">
+              <label for="nom">El vostre nom</label>
+              <input type="text" id="nom" name="nom" autocomplete="name" required>
+            </div>
+            <div class="camp">
+              <label for="telefon">Telèfon de contacte</label>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel" required>
+            </div>
+            <div class="camp">
+              <label for="dia">Per a quin dia</label>
+              <input type="date" id="dia" name="dia" required>
+            </div>
+            <div class="camp">
+              <label for="hora">A quina hora el passareu a buscar</label>
+              <input type="time" id="hora" name="hora" min="10:00" max="15:30">
+              <p class="camp__ajuda">Dins de l'horari: fins a les 15:30 de dimarts
+                a divendres i fins a les 15:00 caps de setmana i festius.</p>
+            </div>
+            <div class="camp camp--ample">
+              <label for="encarrec">Què voleu</label>
+              <textarea id="encarrec" name="encarrec" required></textarea>
+              <p class="camp__ajuda">Si ho voleu per a un dia concret, escriviu-ho
+                aquí. Per a una comanda d'avui o de demà és més ràpid anar a la
+                <a href="carta.html">carta</a> i enviar-nos-la per WhatsApp.</p>
+            </div>
+            <div class="camp camp--ample">
+              <label for="notes">Alguna cosa més que hàgim de saber</label>
+              <textarea id="notes" name="notes"></textarea>
+              <p class="camp__ajuda">Al·lèrgies, intoleràncies o qualsevol altra
+                indicació. Confirmeu-ho també per telèfon abans de recollir-ho.</p>
+            </div>
+            <div class="camp camp--ample">
+              <button class="boto boto--principal" type="submit">Enviar l'encàrrec</button>
+            </div>
+            <p class="avis-formulari camp--ample" id="avis-form" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+
+        <div class="pila">
+          <div class="full">
+            <p class="full__estat" data-obert="">Mentrestant</p>
+            <p class="full__frase">Si ho voleu per avui o per demà, val més que ens truqueu.</p>
+            <p class="camp__ajuda">
+              El taulell va de pressa i el telèfon és el camí curt.
+            </p>
+            <div class="grup-botons">
+              <a class="boto boto--principal" href="tel:+34938432649">938 43 26 49</a>
+            </div>
+          </div>
+
+          <p class="avis-formulari">
+            <strong>PENDENT-CLIENT:</strong> confirmar per a quines dates feu
+            encàrrecs especials i amb quants dies d'antelació els necessiteu. Fins
+            que no ho digueu, aquesta pàgina no anomena cap festa concreta.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccio zona-fosca" aria-labelledby="t-com">
+    <div class="envolt">
+      <p class="retol">Com va</p>
+      <h2 id="t-com">De l'encàrrec al taulell</h2>
+      <ol class="passos">
+        <li class="pas">
+          <h3>Ens ho deixeu dit</h3>
+          <p>Pel formulari o per telèfon, amb el dia i l'hora que us va bé.</p>
+        </li>
+        <li class="pas">
+          <h3>Us ho confirmem</h3>
+          <p>Us truquem per dir-vos que ho tenim anotat i acabar de perfilar-ho.
+             Fins llavors, l'encàrrec no està fet.</p>
+        </li>
+        <li class="pas">
+          <h3>Ho recolliu</h3>
+          <p>El dia acordat, dins de l'horari. Es paga en recollir-ho.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer class="peu">
+  <div class="envolt">
+    <div class="peu__graella">
+      <div>
+        <img src="assets/logo.jpg" alt="La Rostisseria" width="232" height="44" loading="lazy">
+        <p class="peu__nota">Cuina casolana per emportar a L'Ametlla del Vallès des del 2016.</p>
+      </div>
+      <div>
+        <p class="peu__titol">Pàgines</p>
+        <ul class="peu__llista">
+          <li><a href="index.html">Inici</a></li>
+          <li><a href="carta.html">La carta</a></li>
+          <li><a href="encarrecs.html">Encàrrecs</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="peu__titol">Contacte</p>
+        <ul class="peu__llista">
+          <li><a href="tel:+34938432649">938 43 26 49</a></li>
+          <li>Carrer Major, 24<br>08480 L'Ametlla del Vallès</li>
+        </ul>
+      </div>
+    </div>
+    <div class="peu__nota">
+      <p>
+        © <span data-any>2026</span> Rostisseria L'Ametlla ·
+        <a href="avis-legal.html">Avís legal</a> ·
+        <a href="politica-privacitat.html">Privacitat</a> ·
+        <a href="politica-cookies.html">Galetes</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<a class="flotant" href="tel:+34938432649">Trucar</a>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
