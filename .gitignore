@@ -9,3 +9,7 @@ prompts/
 # Material de recerca recuperat de l'arxiu, no per publicar
 assets/web-antiga-*.html
 assets/logo-original-arxiu.jpg
+
+# Cau que deixa wrangler en desplegar. `wrangler-account.json` porta
+# l'identificador del compte de Cloudflare i el repo és públic.
+.wrangler/

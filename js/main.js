@@ -14,6 +14,33 @@
 
   arrel.classList.add('te-js');
 
+  /* ---- ⚠️ FOTOS D'EXEMPLE ----------------------------------------------
+     Les fotos que hi ha ara a `assets/fotos/` NO són del negoci: són fotos
+     d'estoc, posades només perquè es vegi com queda el disseny ple. Cap
+     d'elles ensenya el local, els plats ni la gent de La Rostisseria.
+
+     Mentre això sigui `true`, cada pàgina porta un distintiu que ho diu. La
+     regla del projecte és que no hi pot haver contingut d'exemple sense
+     distintiu, i una foto d'un local que no és el seu és exactament això.
+
+     EL DIA QUE ARRIBIN LES FOTOS DE DEBÒ:
+       1. substituir els fitxers de `assets/fotos/` (mateixos noms),
+       2. posar aquesta constant a `false`,
+       3. esborrar `assets/fotos/CREDITS-FOTOS-EXEMPLE.md`.
+     No cal tocar res més: ni HTML, ni CSS.                          ------ */
+
+  var FOTOS_EXEMPLE = true;
+
+  if (FOTOS_EXEMPLE) {
+    // A dalt de tot i no flotant en un racó: a `carta.html` la barra de
+    // comanda ja ocupa el peu de la finestra i s'hi encavalcaria.
+    var distintiu = doc.createElement('p');
+    distintiu.className = 'avis-exemple';
+    distintiu.textContent =
+      'Maqueta — les fotografies són d’exemple i no són del negoci';
+    doc.body.insertBefore(distintiu, doc.body.firstChild);
+  }
+
   /* ---- Any del peu ---------------------------------------------------- */
 
   Array.prototype.forEach.call(doc.querySelectorAll('[data-any]'), function (el) {
@@ -163,9 +190,24 @@
      Va en aquesta direcció i no a l'inrevés a posta: sense JS es veu el
      marcador, que és presentable, i no pas la icona d'imatge trencada.
      Mentre falti alguna foto, la consola del navegador ensenyarà un 404 per
-     cadascuna. És esperat i desapareix sol quan hi siguin.        ------ */
+     cadascuna. És esperat i desapareix sol quan hi siguin.
 
-  Array.prototype.forEach.call(doc.querySelectorAll('.foto[data-foto]'), function (marc) {
+     ⚠️ PER QUÈ HI HA L'`IntersectionObserver` I NO ES POT TREURE.
+     Aquí la foto es demana amb un `new Image()` per saber si el fitxer hi és.
+     Aquesta comprovació ja ES DESCARREGA LA FOTO SENCERA: quan després es
+     posa l'`<img>`, ja ve de la memòria cau. Vol dir que el `loading="lazy"`
+     de sota NO ESTALVIA RES per si sol — el navegador ni tan sols hi arriba.
+
+     Mentre els espais eren buits això no es notava, perquè els 404 no pesen.
+     Amb les sis fotos posades, la pàgina d'inici es descarregava 490 kB de
+     fotografia de cop, també les que quedaven tres pantalles més avall.
+
+     Per això la comprovació NO es fa fins que el marc s'acosta a la finestra.
+     El `rootMargin` de 600 px fa que la foto ja hi sigui abans no es vegi.
+     Si el navegador no té `IntersectionObserver`, es comprova de seguida:
+     val més gastar dades que no pas quedar-se sense les fotos.     ------ */
+
+  var omple = function (marc) {
     var ruta = 'assets/fotos/' + marc.dataset.foto + '.jpg';
     var prova = new Image();
 
@@ -188,6 +230,25 @@
     });
 
     prova.src = ruta;
+  };
+
+  Array.prototype.forEach.call(doc.querySelectorAll('.foto[data-foto]'), function (marc) {
+    // La de dalt de tot es demana de seguida: entra dins de la primera
+    // pantalla i fer-la esperar només retardaria el que ja es veu.
+    if (marc.dataset.prioritat === 'alta' || !('IntersectionObserver' in window)) {
+      omple(marc);
+      return;
+    }
+
+    var vigia = new IntersectionObserver(function (entrades) {
+      entrades.forEach(function (e) {
+        if (!e.isIntersecting) { return; }
+        vigia.disconnect();
+        omple(marc);
+      });
+    }, { rootMargin: '600px 0px' });
+
+    vigia.observe(marc);
   });
 
   /* ---- Mapa darrere d'un botó -----------------------------------------

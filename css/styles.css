@@ -373,10 +373,78 @@ p, ul, ol, dl, table, figure { margin: 0; }
 /* ---------- Hero -------------------------------------------------------- */
 
 .hero {
+  position: relative;
+  isolation: isolate;
   background: var(--negre);
   color: var(--paper);
   padding-block: var(--v-hero);
   border-bottom: 4px solid var(--cresta);
+}
+
+/* ---- Foto de fons de la capçalera --------------------------------------
+   Va en `background-image` i NO en un `<img>` a posta: si el fitxer no hi és,
+   el navegador no pinta res i la capçalera es queda negra, que és el disseny
+   de sempre. Amb un `<img>` hi sortiria la icona d'imatge trencada.
+   Per això tampoc no depèn del JS.
+
+   El difuminat ve DINS del fitxer, no d'un `filter: blur()`. Així el navegador
+   no ha de difuminar res a cada pintada, no calen els trucs d'escalar la
+   imatge per amagar les vores toves que deixa el filtre, i el fitxer pesa una
+   quarta part perquè una foto difuminada es comprimeix moltíssim millor.  */
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero::before {
+  background-image: var(--hero-foto, none);
+  background-size: cover;
+  background-position: center;
+}
+
+/* ⚠️ EL VEL — contrast sobre una foto QUALSEVOL, no sobre la que hi ha ara.
+   Comprovat amb una foto BLANCA DEL TOT, que és el pitjor cas: així el dia que
+   el client porti una foto clara, el text hi aguanta igual.
+
+   Qui mana aquí és el vermell de l'`<em>` del titular, que és el color més
+   fluix de tots: per sota de 0,76 baixa de 3:1 i deixa de passar AA ni com a
+   text gran. Per això el vel NO BAIXA MAI DE 0,78, ni al punt més clar.
+
+   Amb 0,78 sobre blanc pur: títol 11,7:1 · vermell del títol 3,46:1 ·
+   text 6,8:1 · rètol 10,4:1 · botó 11,7:1. Amb les fotos fosques d'ara va
+   molt més folgat; els números de dalt són el pitjor cas teòric.
+   Si algú aclareix el vel, ha de tornar a passar `contrast.js` ABANS de
+   pujar-ho: el marge del vermell és de només un 15%.                    */
+.hero::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.78) 45%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+}
+
+/* Sobre una foto, el rètol vermell petit no arriba a 4,5:1 i el blanc sí
+   (10,4:1). És la mateixa decisió que ja es va prendre a `.banda-foto`: sobre
+   fotografia, el vermell no fa de text. Sobre el negre pla de `.zona-fosca`
+   es queda vermell, que allà sí que passa. */
+.hero .retol { color: var(--paper); }
+
+/* Una foto per pàgina, perquè dues pestanyes no s'obrin igual. */
+.hero--inici     { --hero-foto: url('../assets/fotos/hero-inici.jpg'); }
+.hero--carta     { --hero-foto: url('../assets/fotos/hero-carta.jpg'); }
+.hero--encarrecs { --hero-foto: url('../assets/fotos/hero-encarrecs.jpg'); }
+.hero--legal     { --hero-foto: url('../assets/fotos/hero-legal.jpg'); }
+
+/* Les legals no són una pàgina de venda: capçalera curta i prou. */
+.hero--legal {
+  padding-block: calc(var(--v-hero) * 0.62);
+  border-bottom-width: 3px;
 }
 
 .hero__graella {
@@ -1103,7 +1171,29 @@ p, ul, ol, dl, table, figure { margin: 0; }
 
 /* ---------- Pàgines legals ---------------------------------------------- */
 
-.legal { padding-block: var(--v-seccio); }
+/* ---------- Distintiu de maqueta ---------------------------------------
+   El posa `js/main.js` mentre la constant `FOTOS_EXEMPLE` sigui `true`,
+   perquè les fotos d'ara són d'estoc i no del negoci. Va a dalt de tot i
+   ocupa lloc de debò: no ha de poder passar desapercebut ni tapar res.
+   Desapareix sol quan es posi la constant a `false`.            ------ */
+
+.avis-exemple {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: var(--cresta);
+  color: var(--blanc);          /* 5,28:1 sobre el vermell de la cresta */
+  font-family: var(--lletra-display);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ample);
+  font-size: 0.62rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* La capçalera fotogràfica ha d'anar a tocar del menú, o sigui que l'encoixinat
+   que abans donava `.legal` sencer ara el porta el cos del document. */
+.legal { padding-block: 0; }
+.legal__cos { padding-block: var(--v-seccio); }
 .legal h2 { font-size: 1.35rem; margin-top: var(--e4); }
 .legal p, .legal ul { margin-top: var(--e3); max-width: 44em; }
 .legal ul { padding-left: 1.25rem; }
