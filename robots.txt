@@ -9,5 +9,3 @@
 
 User-agent: *
 Disallow: /
-
-<!-- prova de desconnexio de Cloudflare -->
